@@ -1,3 +1,64 @@
+/*#include <iostream>
+#include <string>
+#include <map>
+#include <iterator>
+using namespace std;
+int main()
+{
+    long long T;
+    string s, t;
+    int ns, nt, sum, i;
+    map<char, int> M;
+    map<char, int>::iterator it;
+    cin >> T;
+    while (T--)
+    {
+        cin >> ns >> nt;
+        cin >> s >> t;
+        for (i = 0; i < ns; i++)
+        {
+            M[s[i]]++;
+        }
+ 
+        for (i = 0; i < nt; i++)
+        {
+            M[t[i]]++;
+        }
+ 
+        for (it = M.begin(); it != M.end(); it++)
+        {
+            it->second /= 2;
+            //cout << it->second << "\n";
+            sum += it->second;
+        }
+ 
+        if (sum >= ns / 2)
+            cout << "YES\n";
+        else
+            cout << "NO\n";
+ 
+        M.clear();
+        sum=0;
+    }
+ 
+    return 0;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
