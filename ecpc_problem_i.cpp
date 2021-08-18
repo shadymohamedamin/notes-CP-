@@ -27,6 +27,7 @@ while(test--)
             //cout<<endl;
         }
     }
+    //arr[i]*i*(n-i+1)       //base 1
     //cout<<sum;
     cout<<1.0*(1.0*sum/((n*(n+1))/2));
 }
