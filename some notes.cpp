@@ -321,7 +321,165 @@ vector<bool>prime(n+1,1);
 #define Pi 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679           
            
            
-           
+ int max_so_far = a[0];
+   int curr_max = a[0];
+ 
+   for (int i = 1; i < size; i++)
+   {
+        curr_max = max(a[i], curr_max+a[i]);
+        max_so_far = max(max_so_far, curr_max);
+   }
+   return max_so_far;
+		 
+		 
+		 
+		 
+#include<bits/stdc++.h>
+#include <stdio.h>
+#include <algorithm>
+#include <queue>
+#include <string.h>
+using namespace std;
+int n,m;
+char arr[110][110];
+int visit[110][110];
+struct info
+{
+    int x,y,step;
+};
+int dx[4]={1,-1,0,0};
+int dy[4]={0,0,1,-1};
+int bfs(int x,int y)//,vector<vector<char> >&arr,vector<vector<int> >&visit)
+{
+    info now;
+    queue<info>q;
+    memset(visit,0,sizeof(visit));
+    //while(q.size())q.pop();
+    now.x=x;
+    now.y=y;
+    now.step=0;
+    q.push(now);
+    visit[now.x][now.y]=1;
+    while(!q.empty())
+    {
+     info next;
+     now=q.front();
+     q.pop();
+     if(arr[now.x][now.y]=='X') return now.step;
+     for(int i=0;i<4;i++)
+     {
+         int r=now.x+dx[i];
+         int c=now.y+dy[i];
+         if(r<n&&r>=0&&c<m&&c>=0&&!visit[r][c]&&(arr[r][c]=='.'||arr[r][c]=='X'))
+         {
+             visit[r][c]=1;
+             next.x=r;
+             next.y=c;
+             next.step=now.step+1;
+             q.push(next);
+         }
+     }
+    }
+    return INT_MAX;
+}
+int main()
+{
+    int test;
+    cin>>test;
+    while(test--)
+    {
+        cin>>n>>m;
+        //vector<vector<char> >arr(n,vector<char>(m));
+        //vector<vector<int> >visit(n,vector<int>(m,0));
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                cin>>arr[i][j];
+            }
+        }
+        int d_saly=INT_MAX,d_cockroache=INT_MAX;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(arr[i][j]=='*')
+                {
+                    d_cockroache=min(d_cockroache,bfs(i,j));//,arr,visit));
+                }
+                if(arr[i][j]=='S')
+                {
+                    d_saly=min(d_saly,bfs(i,j));//,arr,visit));
+                }
+            }
+        }
+        if(d_saly<d_cockroache) cout<<"yes\n";
+        else cout<<"no\n";
+    }
+    return 0;
+}
+		 
+		 
+		 
+		 
+		 
+//{return i<n&&i>=0&&j<m&&j>=0;}
+int c;
+int n;
+void fun(int l,int r,vector<vector<char> >&arr,vector<vector<int> >&visit)
+{
+    if((r>=n||l<0||l>=n||r<0)||arr[l][r]=='X'||visit[l][r]==1) return;
+    visit[l][r]=1;
+    c++;
+    fun(l+1,r,arr,visit);
+    fun(l,r+1,arr,visit);
+    fun(l-1,r,arr,visit);
+    fun(l,r-1,arr,visit);
+}
+int main()
+{
+    //int n;
+     fast();
+    cin>>n;
+    vector<vector<int> >visit(n,vector<int>(n,0));
+    vector<vector<char>>arr(n,vector<char>(n));//<char,>>arr;
+    c=0;
+    for(ll i=0;i<n;i++)
+    {
+        for(ll j=0;j<n;j++)
+        {
+            cin>>arr[i][j];
+        }
+    }
+    fun(0,0,arr,visit);
+    cout<<c;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
            
            
            
