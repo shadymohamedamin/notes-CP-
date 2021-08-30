@@ -1,3 +1,32 @@
+        //max gcd
+        int n;
+        cin>>n;
+        int arr[n];
+        for(int i=0;i<n;i++)
+        cin>>arr[i];
+        int mx=0;
+        for(int i=0;i<n-1;i++)
+        {
+            mx=max(mx,__gcd(arr[i],arr[i+1]));
+        }
+        int c=0;
+        int mx1=0;
+        for(int i=0;i<n;i++)
+        {
+            if((arr[i]%mx)==0)
+            c++,mx1=max(mx1,c);
+            else mx1=max(mx1,c),c=0;
+        }
+//max lcm
+lcm(n,n-1);
+
+
+
+
+
+
+
+
 
 seive prime
 
