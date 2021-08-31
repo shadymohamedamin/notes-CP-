@@ -1,3 +1,10 @@
+            c1+=(arr[i]&1);     //right
+            if(arr[i]&1) c1+=arr[i]; //wrong
+
+
+
+
+
         //max gcd
         int n;
         cin>>n;
