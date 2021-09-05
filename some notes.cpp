@@ -1,3 +1,38 @@
+string name="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ll val(char c)
+{
+    if(c>='0'&&c<='9') return (ll)c-'0';
+    else return (ll)c-'A'+10;
+}
+string from_d_to_any(ll n,ll b)
+{
+    string res="";
+    while(n)
+    {
+        res+=name[n%b];
+        n/=b;
+    }
+    reverse(res.begin(),res.end());
+    return res;
+}
+ll from_any_to_d(string n,ll b)
+{
+    ll r=0;
+    ll p=1;
+    for(int i=n.size()-1;i>=0;i--)
+    {
+    r+=val(n[i])*p;
+    p*=b;
+    }
+    return r;
+}
+
+
+
+
+
+
+
 // Multiplies str1 and str2, and prints result.
 string multiply(string n1, string n2)
 {
