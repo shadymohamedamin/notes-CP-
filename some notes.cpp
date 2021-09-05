@@ -1,3 +1,19 @@
+// Multiplies str1 and str2, and prints result.
+string multiply(string n1, string n2)
+{
+    if(n1=="0"||n2=="0") return "0";
+    string s(n1.size()+n2.size(),'0');
+    for(int i=n1.size()-1;i>=0;i--)
+    {
+        for(int j=n2.size()-1;j>=0;j--)
+        {
+            ll num=((n1[i]-'0')*(n2[j]-'0'))+s[i+j+1]-'0';//carry
+            s[i+j+1]=(num%10)+'0';
+            s[i+j]+=(num/10);
+        }
+    }
+    for(int i=0;i<s.size();i++)if(s[i]!='0') return s.substr(i);
+}
 //functions to add and multiply big numbers
 string doSum(string a, string b)
 {
